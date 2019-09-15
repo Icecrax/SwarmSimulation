@@ -37,8 +37,8 @@ public class BirdFlock implements IBirdFlock {
     /**
      * PRE: g and at are not null
      * POST: All birds in the flock are updated and drawn to the screen
-     * @param g
-     * @param at
+     * @param g a Graphics2D object
+     * @param at an AffineTransform object
      */
     public void run(Graphics2D g, AffineTransform at) {
         for (IBird b : members) {
@@ -59,7 +59,7 @@ public class BirdFlock implements IBirdFlock {
     /**
      * PRE: members is not null
      * POST: A new bird is added to the list of birds
-     * @param member
+     * @param member a not null bird object to add
      */
     public void addMember(IBird member) {
         members.add(member);

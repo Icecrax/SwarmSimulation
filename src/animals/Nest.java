@@ -53,9 +53,9 @@ public class Nest extends Bird implements ITimeBased {
     /**
      * PRE: g, birds and at are not null
      * POST: The nests position will not be updated, just the view updated and drawn
-     * @param g
-     * @param birds
-     * @param at
+     * @param g a Graphics2D object
+     * @param birds a list of not null bird objects
+     * @param at an AffineTransform object
      */
     @Override
     public void run(Graphics2D g, List<IBird> birds, AffineTransform at) {

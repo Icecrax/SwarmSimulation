@@ -92,6 +92,7 @@ public class Pigeon extends Bird {
      * @param birds birds is not NULL
      * @return An additional Vector, that influences the behavior of the bird and globally the structure of the flock
      */
+
     private Vector format(List<IBird> birds) {
         Pigeon tempBird = new Pigeon(-1,getPosition().getX(),getPosition().getY(), getPosition().getZ());
         for (IBird pigeon : birds) {

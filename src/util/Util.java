@@ -15,9 +15,9 @@ public class Util {
 
     /**
      * POST: A number between min and max which is not zero is returned
-     * @param min
-     * @param max
-     * @return
+     * @param min the lowest number to return
+     * @param max the highest number to return
+     * @return a number between min and max
      */
     public static int randomInRange(int min, int max) {
         Random r = new Random();
@@ -28,7 +28,7 @@ public class Util {
     /**
      * PRE: dim is not null
      * POST: window dimensions are set to the specified width and height
-     * @param dim
+     * @param dim a not null Dimension object
      */
     public static void setDimension(Dimension dim){
         dimension = new Dimension(dim.width, dim.height);
@@ -41,8 +41,8 @@ public class Util {
 
     /**
      * PRE: bird is not null
-     * @param bird
-     * @return
+     * @param bird a not null bird object
+     * @return if the passed bird object is out of bounds
      */
     public static boolean isOutOfWindow(IBird bird){
         Vector position = bird.getPosition();
@@ -54,8 +54,8 @@ public class Util {
 
     /**
      * PRE: bird is not null
-     * @param bird
-     * @return
+     * @param bird a not null bird object
+     * @return if the passed bird object is moving out of window bounds
      */
     public static boolean isMovingOutOfWindow(IBird bird){
         Vector position = bird.getPosition();
@@ -71,7 +71,7 @@ public class Util {
      * @param x any number
      * @return The function produces for a given number a value between 0 and 1
      */
-    public static float noise(float x){
+    static float noise(float x){
         return (float)Math.sin((Math.pow(Math.E,x/(Math.pow(Math.E,x)+1) + Math.sin(x)) + Math.sin(x/2))/2);
     }
 

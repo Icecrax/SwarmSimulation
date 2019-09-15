@@ -58,7 +58,7 @@ public class Canvas extends JPanel {
     /**
      * PRE: g is not null
      * POST: All the updated game elements for one frame are drawn in 2D space
-     * @param g
+     * @param g a Graphics object
      */
     @Override
     public void paintComponent(Graphics g) {

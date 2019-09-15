@@ -70,7 +70,7 @@ public class Bird implements IBird {
     /**
      * PRE: Force is not null
      * POST: The force is added to the acceleration
-     * @param force
+     * @param force a vector to be added
      */
     public void addForce(Vector force){
         acceleration = acceleration.add(force);
@@ -79,7 +79,7 @@ public class Bird implements IBird {
     /**
      * PRE: goal is not null
      * POST: Returns a direction the bird uses to find its way towards the goal
-     * @param goal
+     * @param goal a vector at which to steer
      * @return
      */
     public Vector look(Vector goal){
@@ -98,7 +98,7 @@ public class Bird implements IBird {
     /**
      * PRE: birds is not null, there are other initialized, valid birds
      * POST: The bird oriented itself by other birds and is not out of the world bounds
-     * @param birds
+     * @param birds a list of not NULL bird objects
      */
     public void flock(List<IBird> birds){
         view(birds);
@@ -131,7 +131,7 @@ public class Bird implements IBird {
     /**
      * PRE: birds is not null
      * POST: Mark all birds that are included in the current bird's sight
-     * @param birds
+     * @param birds a list of not NULL bird objects
      */
     public void view(List<IBird> birds){
 
@@ -163,8 +163,8 @@ public class Bird implements IBird {
     /**
      * PRE: birds is not null
      * POST: A vector is returned that specifies how the current bird should move in order to avoid collision with other birds
-     * @param birds
-     * @return
+     * @param birds a list of not NULL bird objects
+     * @return a vector which keeps the bird separated from the rest
      */
     public Vector separate(List<IBird> birds){
         float separation = 30;
@@ -210,8 +210,8 @@ public class Bird implements IBird {
     /**
      * PRE: birds is not null
      * POST: A vector is returned that specifies how the current bird should move in order to align with the birds around it
-     * @param birds
-     * @return
+     * @param birds a list of not NULL bird objects
+     * @return a vector which keeps the bird aligned with the rest
      */
     public Vector align(List<IBird> birds){
 
@@ -248,8 +248,8 @@ public class Bird implements IBird {
     /**
      * PRE: birds is not null
      * POST: A vector is returned that specifies how the current bird should move in order to keep flock together
-     * @param birds
-     * @return
+     * @param birds a list of not NULL bird objects
+     * @return a vector which keeps the bird close to the rest
      */
     public Vector unite(List<IBird> birds){
         float maxDistance = 50;
@@ -287,8 +287,8 @@ public class Bird implements IBird {
     /**
      * PRE: g is not null, at is not null
      * POST: The representation of the current bird is drawn in 2D space
-     * @param g
-     * @param at
+     * @param g a Graphics2D object
+     * @param at an AffineTransform object
      */
     public void draw(Graphics2D g, AffineTransform at){
         int brightness = 0;
@@ -299,10 +299,11 @@ public class Bird implements IBird {
 
         g.setTransform(at);
 
-        // ERROR: If height is out of the height bounds, brightness becomes assigned an invalid value
-        // (not between 0 and 255)
-        // Could have been avoided by either limiting the bird's allowed position of limiting the
-        // brightness value
+        // TODO:
+        //  ERROR: If height is out of the height bounds, brightness becomes assigned an invalid value
+        //  (not between 0 and 255)
+        //  Could have been avoided by either limiting the bird's allowed position of limiting the
+        //  brightness value
         g.setColor(new Color(255, brightness, brightness));
         g.fillRect((int) position.getX(), (int) position.getY(), 5, 5);
     }
@@ -324,8 +325,8 @@ public class Bird implements IBird {
     /**
      * PRE: bird is not null
      * POST: The distance between the two birds' positions is returned
-     * @param bird
-     * @return
+     * @param bird a not null bird object
+     * @return the distance to that bird from the current object
      */
     public float distanceToBird(IBird bird){
         if(this.id == bird.getId()){
@@ -336,7 +337,7 @@ public class Bird implements IBird {
 
     /**
      * POST: The return value specifies if the bird is out of the window bounds
-     * @return
+     * @return if the current bird is out of window bounds
      */
     public boolean isOutOfWindow(){
         return Util.isOutOfWindow(this);
@@ -344,7 +345,7 @@ public class Bird implements IBird {
 
     /**
      * POST: The return value specifies if the bird is moving out of the window bounds
-     * @return
+     * @return if the current bird is moving out of window bounds
      */
     public boolean movingOutOfWindow(){
         return Util.isMovingOutOfWindow(this);
@@ -352,7 +353,7 @@ public class Bird implements IBird {
 
     /**
      * POST: The return value specifies if the bird is out of the height bounds
-     * @return
+     * @return if the current bird is out of the height bounds
      */
     public boolean movingOutOfHeightBounds(){
         return position.getZ() + velocity.getZ() > 100

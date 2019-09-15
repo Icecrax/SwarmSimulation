@@ -45,8 +45,8 @@ public class Invader extends Bird implements ITimeBased {
 
     /**
      * PRE: birds is not null, there are other initialized, valid birds
-     * POST: The invader tries to group up with near flocks, thats why there is no seperation or alignment in it
-     * @param birds
+     * POST: The invader tries to group up with near flocks, that's why there is no separation or alignment in it
+     * @param birds a list of not null bird objects
      */
     @Override
     public void flock(List<IBird> birds){
@@ -69,6 +69,10 @@ public class Invader extends Bird implements ITimeBased {
         }
     }
 
+    /**
+     * @param birds a list of not NULL bird objects
+     * @return a vector which keeps the bird close to the rest
+     */
     @Override
     public Vector unite(List<IBird> birds){
         float maxDistance = 50;
@@ -94,7 +98,11 @@ public class Invader extends Bird implements ITimeBased {
         return goal.multiply(multiplicator);
     }
 
-
+    /**
+     * Draws the bird on the screen
+     * @param g a Graphics2D object
+     * @param at an AffineTransform object
+     */
     @Override
     public void draw(Graphics2D g, AffineTransform at){
         float height = getPosition().getZ();

@@ -57,7 +57,7 @@ public class PigeonFlock implements IBirdFlock {
     /**
      * PRE: members is not null
      * POST: A new bird is added to the list of birds
-     * @param member
+     * @param member a not null bird object to add to the list
      */
     public void addMember(IBird member) {
         members.add(member);
