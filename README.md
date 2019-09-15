@@ -8,5 +8,5 @@ More info about the their behaivior and how they can be simulated in this paper:
 
 **Note: On this task I worked with two other colleges at the TU**
 
-[](swarm.png)
+![](swarm.png)
 
